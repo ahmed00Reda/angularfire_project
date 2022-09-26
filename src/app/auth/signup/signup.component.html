@@ -1,0 +1,25 @@
+<h2 style="text-align: center; padding: 10px; background-color: beige; ">SignUp here</h2>
+
+
+<section class="signup">
+  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <mat-form-field >
+      <input matInput placeholder="your email" type="email"  ngModel name="email" email required>
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field >
+      <input matInput placeholder="your password" type="password" ngModel name="password" required minlength="6"  >
+      <mat-hint>should be 6 chars long .</mat-hint>
+      <mat-error>not valid password</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox ngModel required name="agree" color="primary" >I agree to all terms and conditions</mat-checkbox>
+
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">submit</button>
+  </form>
+
+
+</section>

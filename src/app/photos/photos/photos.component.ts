@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {getFirestore, doc, deleteDoc} from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable,getDownloadURL } from "firebase/storage";
-import { FirestoreModule } from '@angular/fire/firestore';
-import { Observable, Subscription, Subject } from 'rxjs';
 import  { map } from 'rxjs/operators';
 
 

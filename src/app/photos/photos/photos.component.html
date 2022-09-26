@@ -1,0 +1,123 @@
+
+<div class="flex flex-col">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full">
+          <thead class="border-b">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left" (click)="getAllphotos()">
+                photo
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+               description
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                date
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Handle
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b" *ngFor="let photo of allphotos">
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 w-48">
+                <img [src]="photo.photoUrl" alt=""></td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap ">
+               {{photo.description}}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+               {{photo.date|moment}}
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <button (click)="onDelete(photo.id)" type="button" class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">Delete</button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[420px] bg-white">
+    <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="photosform"
+      class="py-6 px-9">
+      <div class="mb-5">
+        <label
+          for="title"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+          Title
+        </label>
+        <input
+          type="text"
+          name="title"
+          formControlName="title"
+          id="title"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+      <div class="mb-5">
+        <label
+          for="description"
+          class="mb-3 block text-base font-medium text-[#07074D]"
+        >
+          description
+        </label>
+        <input
+          type="text"
+          name="description"
+          formControlName="description"
+          id="description"
+
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+        />
+      </div>
+
+      <div class="mb-6 pt-4">
+        <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+          Upload Photo
+        </label>
+
+        <div class="mb-8">
+          <input type="file" name="file" id="file" class="sr-only"
+          formControlName="photoUrl" (change)="selectedfile($event)"/>
+          <label
+            for="file"
+            class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center"
+          >
+            <div>
+              <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                Drop files here
+              </span>
+              <span class="mb-2 block text-base font-medium text-[#6B7280]">
+                Or
+              </span>
+              <span
+                class="inline-flex rounded border border-[#e0e0e0] py-2 px-7 text-base font-medium text-[#07074D]"
+              >
+                Browse
+              </span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+        >
+          ADD photo
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
